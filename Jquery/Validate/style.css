@@ -1,0 +1,17 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+	width: 50%;
+	min-height: 500px;
+	margin: 0px auto;
+	text-align: center;
+	background: #F7F7F7;
+}
+
+table {
+	width: 50%;
+	margin: 0px auto;
+}

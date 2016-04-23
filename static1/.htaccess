@@ -1,0 +1,13 @@
+#DirectoryIndex index.php
+#ErrorDocument 404 /static2/404.php
+
+<IfModule rewrite_module>  
+RewriteEngine on   
+RewriteRule type-([a-zA-Z_]+)-id(\d+)\.html news.php?type=$1&id=$2  
+RewriteRule action-([a-zA-Z_]+)-id(\d+)\.html index.php?action=$1&id=$2
+
+#RewriteRule ([a-zA-Z]{1,})-([0-9]{1,}).html index.php?action=$1&id=$2
+
+RewriteRule [a-zA-Z0-9_]+\.class\.php /static2/403.html
+
+</IfModule>  

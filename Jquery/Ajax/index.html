@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>JQuery Ajax - 测试</title>
+		<script src="jquery-1.11.0.min.js"></script>
+	</head>
+	<body>
+		<div class="p">
+			<input type="text" class="value" value="101" />
+			<a href="javascript:void(0)" class="btn">提交</a>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				$(".btn").click(function(){
+					var value1 = $(".value").val();
+			        $.getJSON("json.php",{value:value1},function(data){
+			            console.log(data);
+			        });
+					$.getJSON("json.php",{value:value1},function(data){
+						console.log(data);
+					},'json');
+				});
+				$(".btn").click(function(){
+					var value1 = $(".value").val();
+					$.post("json.php",{value:value1},function(data){
+						console.log(data);
+					},'json');
+				});
+
+				$(".btn").click(function(){
+					var value1 = $(".value").val();
+					$.ajax({
+						type:'post',
+						url:'json.php',
+						data:{
+							value:value1
+						},
+						async:true,
+						dataType:'json',
+
+						success:function(resp){
+							console.log(resp);
+						},
+						error:function(){
+							alert('执行了error回调');
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
