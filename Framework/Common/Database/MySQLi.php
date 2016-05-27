@@ -47,10 +47,9 @@ Class MySQLi implements IDatabase{
      */
     public function getRow($sql){
         $res = mysqli_query($this->conn,$sql);
+        if(!$res) return false;
         $row = $res->fetch_array();
-        if($row == null && empty($row)){
-            return false;
-        }
+        if($row == null && empty($row)) return false;
         return $row;
     }
 
@@ -61,11 +60,30 @@ Class MySQLi implements IDatabase{
      */
     public function getAssoc($sql){
         $res = mysqli_query($this->conn,$sql);
+        if(!$res) return false;
         $assoc = $res->fetch_assoc();
-        if($assoc == null && empty($assoc)){
-            return false;
-        }
+        if($assoc == null && empty($assoc)) return false;
         return $assoc;
+    }
+    /**
+    * 获取对象数组
+    * @param $sql
+    * @return object|bool
+    */
+    public function getObject($sql){
+        $res = mysqli_query($this->conn,$sql);
+        if(!$res) return false;
+        if($res->num_rows == 1){    
+            $assoc = $res->fetch_assoc();
+            if($assoc == null && empty($assoc)) return false;
+            return (object)$assoc;
+        }else{ 
+            $rows = array();
+            while($row = $res->fetch_assoc()){
+                array_push($rows, (object)$row);
+            }
+            return (object)$rows;
+        }
     }
 
     public function close(){

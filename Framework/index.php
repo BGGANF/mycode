@@ -31,12 +31,8 @@ spl_autoload_register('\\Common\\Loader::autoload');
 error_reporting(E_ALL ^ E_DEPRECATED);
 //适配器模式
 $db = new Common\Database\MySQLi();
-$db->connect('localhost','root','root','wyx6');
-$assoc = $db->getAssoc("select *from tb_user where uid =3");
-var_dump($assoc);
-//while($row = $db->fetch_array($res)){
-//    echo $row['username'] . "<br>";
-//}
-//print_r($res);
+$db->connect('localhost','root','wing-root','mycode');
+$object = $db->getObject("select *from tb_user where name = 'zhangshan'");
+var_dump($object);
 
 
