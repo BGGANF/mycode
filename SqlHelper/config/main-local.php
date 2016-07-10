@@ -4,7 +4,7 @@ $config = [
     'db'=>[
         'host' => 'localhost',
         'user' => 'root',
-        'pwd' => 'root',
+        'pwd' => 'wing-root',
         'dbname'=>'mycode',
         'charset' => 'utf8',
     ],

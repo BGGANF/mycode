@@ -57,10 +57,10 @@
     $pageSize = 10;        //页面记录显示的条数
     $showPage = 5;         //页码显示的数目
     //编写sql获取分页数据SELECT *FROM 表明 LIMIT 起始位置，显示条数
-    $sql = 'SELECT *FROM page LIMIT ' . ($page-1)*$pageSize . ",$pageSize";
+    $sql = 'SELECT *FROM tb_user LIMIT ' . ($page-1)*$pageSize . ",$pageSize";
     $result = $sqlHelper->getRows($sql);
     //获取总条数
-    $total_sql = 'SELECT COUNT(*) FROM page';
+    $total_sql = 'SELECT COUNT(*) FROM tb_user';
     $total = $sqlHelper->getOneRow($total_sql)[0];
     //计算总页数
     $total_pages = ceil($total/$pageSize);
